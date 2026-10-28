@@ -1,0 +1,12 @@
+# secrets - never commit these
+.env
+
+# Python junk
+__pycache__/
+*.pyc
+.venv/
+
+# dbt build output
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
