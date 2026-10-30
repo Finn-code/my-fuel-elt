@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: fuelprice
+        description: "Raw fuel price records from data.gov.my, one JSON payload per row."

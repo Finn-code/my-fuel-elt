@@ -1,0 +1,14 @@
+name: fuel_elt
+version: "1.0.0"
+profile: fuel_elt
+
+model-paths: ["models"]
+
+models:
+  fuel_elt:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
