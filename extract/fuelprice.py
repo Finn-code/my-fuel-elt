@@ -27,6 +27,9 @@ def fetch_records() -> list[dict]:
     log.info("Fetched %d records", len(data))
     return data
 
+def to_rows(records: list[dict]) -> list[tuple]:
+    """Turn API records into (record_date, series_type, payload) tuples for the database."""
+    return [(r["date"], r["series_type"], Jsonb(r)) for r in records]
 
 def load_records(records: list[dict], conn: psycopg.Connection) -> None:
     """Insert records. If a (date, series_type) already exists, update it instead."""
@@ -36,7 +39,7 @@ def load_records(records: list[dict], conn: psycopg.Connection) -> None:
         ON CONFLICT (record_date, series_type)
         DO UPDATE SET payload = EXCLUDED.payload, loaded_at = now()
     """
-    rows = [(r["date"], r["series_type"], Jsonb(r)) for r in records]
+    rows = to_rows(records)
 
     with conn.cursor() as cur:
         cur.executemany(sql, rows)
