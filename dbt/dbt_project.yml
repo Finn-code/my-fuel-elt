@@ -12,3 +12,5 @@ models:
     marts:
       +schema: marts
       +materialized: table
+      +grants:
+        select: ["metabase_reader"]
