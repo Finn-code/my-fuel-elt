@@ -6,7 +6,7 @@ loads them into Postgres, and transforms them with dbt.
 ## Status
 - [x] Phase 0: Project setup
 - [x] Phase 1: Extract + Load
-- [ ] Phase 2: dbt transformations
+- [x] Phase 2: dbt transformations
 - [ ] Phase 3: Tests
 - [ ] Phase 4: Dashboard
 - [ ] Phase 5: Airflow scheduling
@@ -20,3 +20,6 @@ loads them into Postgres, and transforms them with dbt.
   pay `ron95_budi95` (RM1.99). Before that date, `ron95` was the price everyone paid.
 - Announcements are usually on Thursdays but not always (e.g. Tuesday 2025-09-30), so
   intervals between rows are not always exactly 7 days.
+- Mid-2018 to mid-2019: prices announced monthly instead of weekly (price freeze after
+  GE14, May 2018). Six gaps of 14–32 days. Data is complete for that period; the
+  `assert_no_large_gaps_between_prices` test reports these as warnings.

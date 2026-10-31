@@ -6,3 +6,9 @@ sources:
     tables:
       - name: fuelprice
         description: "Raw fuel price records from data.gov.my, one JSON payload per row."
+        columns:
+          - name: series_type
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ["level", "change_weekly"]

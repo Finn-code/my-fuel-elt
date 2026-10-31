@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_fuel_prices
+    description: "Weekly official fuel prices in RM. One row per announcement date."
+    columns:
+      - name: price_date
+        description: "Date the price took effect."
+        data_tests:
+          - unique
+          - not_null
+      - name: ron95
+        description: "RON95 price. Before 2025-09-30 the universal price; after, the non-subsidised price."
+        data_tests:
+          - not_null
+      - name: ron97
+        description: "RON97 price."
+        data_tests:
+          - not_null
+      - name: diesel
+        description: "Diesel price."
+        data_tests:
+          - not_null
